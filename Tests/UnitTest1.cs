@@ -16,12 +16,19 @@ namespace Tests
 		{
 			var numbers = GivenASortedSetOfNumbers();
 			var result = WhenChopIsCalledWithANumberInTheSet(54, numbers);
-			ThenTheCorrectIndexIsReturned(result);
+			ThenTheCorrectIndexIsReturned(5, result);
+		}
+		[Test]
+		public void WhenChopIsCalledWith66_ReturnsMinus1()
+        {
+			var numbers = GivenASortedSetOfNumbers();
+			var result = WhenChopIsCalledWithANumberInTheSet(66, numbers);
+			ThenTheCorrectIndexIsReturned(-1, result);
 		}
 
-		private void ThenTheCorrectIndexIsReturned(int result)
+		private void ThenTheCorrectIndexIsReturned(int expectedResult, int result)
 		{
-			Assert.That(result, Is.EqualTo(5));
+			Assert.That(result, Is.EqualTo(expectedResult));
 		}
 
 		private int WhenChopIsCalledWithANumberInTheSet(int number, int[] numbers)
