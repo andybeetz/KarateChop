@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace Tests
 {
@@ -6,7 +7,12 @@ namespace Tests
 	{
 		public static int Chop(int number, int[] numbers)
 		{
-			return 5;
+			var match = numbers.Select((value, index) => new { value, index }).Where(t => t.value == number).FirstOrDefault();
+
+			if (match == null)
+				return -1;
+
+			return match.index;
 		}
 	}
 }
